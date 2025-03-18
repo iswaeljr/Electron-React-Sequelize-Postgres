@@ -18,7 +18,6 @@ npm install sequelize sequelize-cli
 npm install -D tailwindcss@3 postcss autoprefixer
 npm install dotenv
 
-
 ```Para uso do banco sql server
 $ npm install tedious
 ```
