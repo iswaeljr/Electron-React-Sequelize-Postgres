@@ -14,5 +14,17 @@ const sequelize = new Sequelize(
       logging: false, // Logar queries (pode ser desativado em produção)
     }
   );
+
+  const sequelizeSqlServer = new Sequelize(
+    process.env.DB_NAME2 || 'database_name',
+    process.env.DB_USER2 || 'user',
+    process.env.DB_PASSWORD2 || '',
+    {
+      host: process.env.DB_HOST2 || 'localhost',
+      dialect: 'mssql', // ou 'mysql', 'sqlite', 'mariadb'
+      logging: false, // Logar queries (pode ser desativado em produção)
+    }
+  );
   
-  export default sequelize;
+  export { sequelize, sequelizeSqlServer };
+  
