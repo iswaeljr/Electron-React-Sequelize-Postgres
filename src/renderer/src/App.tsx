@@ -1,32 +1,20 @@
-import { useEffect, useState } from 'react';
+import userHook from './hooks/userHook';
 
 
 function App(): JSX.Element {
-  const [users, setUsers] = useState<{ id: number; name: string; email: string; telefone: string }[]>([]);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [response, setResponse] = useState<string | null>(null);
 
-  const fetchUsers = async () => {
-    const result = await  (window as any).api.user.getUsers();
-    setUsers(result);
-  };
-  
-  const handleCreateUser = async () => {
-    try {
-      const user = await  (window as any).api.user.createUser({ name, email }); // Chama a função exposta no preload
-      
-      setResponse(`Usuário criado: ${user.name} (${user.email})`);
-      fetchUsers();
-    } catch (error) {
-      console.error('Erro ao criar usuário:', error);
-      setResponse('Erro ao criar usuário.');
-    }
-  };
+    const {
+      users,
+      name,
+      setName,
+      email,
+      setEmail,
+      response,
+      addUser,
+    } = userHook();
 
-  useEffect(() => {
-    fetchUsers(); // Carrega os usuários ao iniciar
-  }, []);
+
+    addUser;
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
@@ -45,7 +33,7 @@ function App(): JSX.Element {
       onChange={(e) => setEmail(e.target.value)}
       style={{ color:'black', margin: '10px', padding: '10px' }}
     />
-    <button onClick={handleCreateUser} style={{ padding: '10px', fontSize: '16px' }}>
+    <button onClick={addUser} style={{ padding: '10px', fontSize: '16px' }}>
       Criar Usuário
     </button>
     {response && <p>{response}</p>}

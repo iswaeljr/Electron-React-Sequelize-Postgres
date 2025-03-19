@@ -4,14 +4,14 @@ interface UserAttributes {
   id: number;
   name: string;
   email: string;
-  telefone: string;
+  telefone?: string;
 }
-interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
+interface UserCreationAttributes extends Omit<UserAttributes, 'id'> {}
 export default class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
   public id!: number;
   public name!: string;
   public email!: string;
-  public telefone!: string;
+  public telefone?: string;
 
   static initModel(sequelize: Sequelize) {
     User.init(
