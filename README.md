@@ -9,8 +9,8 @@ An Electron application with React and TypeScript
 ## Project Setup
 
 ### Install
-https://electron-vite.org/guide/
-https://tailwindcss.com/docs/installation/using-vite
+$ https://electron-vite.org/guide/
+$ https://tailwindcss.com/docs/installation/using-vite
 
 ### Criar Projeto
 ```bash
