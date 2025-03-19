@@ -12,7 +12,7 @@ An Electron application with React and TypeScript
 https://electron-vite.org/guide/
 https://tailwindcss.com/docs/installation/using-vite
 
-# Criar Projeto
+### Criar Projeto
 ```
 $ npm create @quick-start/electron@latest
 $ npm install sequelize sequelize-cli
@@ -20,7 +20,8 @@ $ npm install -D tailwindcss@3 postcss autoprefixer
 $ npm install dotenv
 ```
 
-```Para uso do banco sql server
+# Para uso do banco sql server
+```bash
 $ npm install tedious
 ```
 
