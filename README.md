@@ -13,10 +13,12 @@ https://electron-vite.org/guide/
 https://tailwindcss.com/docs/installation/using-vite
 
 # Criar Projeto
-npm create @quick-start/electron@latest
-npm install sequelize sequelize-cli
-npm install -D tailwindcss@3 postcss autoprefixer
-npm install dotenv
+```
+$ npm create @quick-start/electron@latest
+$ npm install sequelize sequelize-cli
+$ npm install -D tailwindcss@3 postcss autoprefixer
+$ npm install dotenv
+```
 
 ```Para uso do banco sql server
 $ npm install tedious
