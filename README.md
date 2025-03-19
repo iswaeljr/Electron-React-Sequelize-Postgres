@@ -21,7 +21,7 @@ $ npm install -D tailwindcss@3 postcss autoprefixer
 $ npm install dotenv
 ```
 
-# Para uso do banco sql server
+### Para uso do banco sql server
 ```bash
 $ npm install tedious
 ```
