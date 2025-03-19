@@ -1,6 +1,6 @@
 # react-electron-sequelize
 
-An Electron application with React and TypeScript
+Projeto em react e electron com integração com postgres pelo orm sequelize
 
 ## Recommended IDE Setup
 
@@ -9,8 +9,13 @@ An Electron application with React and TypeScript
 ## Project Setup
 
 ### Install
+```bash
 $ https://electron-vite.org/guide/
+```
+
+```bash
 $ https://tailwindcss.com/docs/installation/using-vite
+```
 
 ### Criar Projeto
 ```bash
