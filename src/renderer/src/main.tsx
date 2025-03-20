@@ -1,4 +1,3 @@
-import './assets/main.css'
 import './styles/global.css'
 
 import React from 'react'
