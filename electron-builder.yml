@@ -32,12 +32,12 @@ linux:
   target:
     - AppImage
     - snap
-    - deb
-  maintainer: electronjs.org
+    - rpm
+    - freebsd
+    - pacman
+  maintainer: ismaelDev.com.br
+  synopsis: ${description}
   category: Utility
 appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false
-publish:
-  provider: generic
-  url: https://example.com/auto-updates
