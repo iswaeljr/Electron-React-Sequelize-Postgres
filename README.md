@@ -10,11 +10,11 @@ Projeto em react e electron com integração com postgres pelo orm sequelize
 
 ### Install
 ```bash
-$ https://electron-vite.org/guide/
+# https://electron-vite.org/guide/
 ```
 
 ```bash
-$ https://tailwindcss.com/docs/installation/using-vite
+# https://tailwindcss.com/docs/installation/using-vite
 ```
 
 ### Criar Projeto
