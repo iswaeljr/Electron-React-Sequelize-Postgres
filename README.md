@@ -24,6 +24,8 @@ $ npm create @quick-start/electron@latest
 $ npm install sequelize sequelize-cli
 $ npm install -D tailwindcss@3 postcss autoprefixer
 $ npm install dotenv
+$ npm install electron-router-dom@1.0.5
+$ npm install phosphor-react clsx //Icones e renderização condicional
 ```
 
 ### Para uso do banco sql server

@@ -1,7 +1,11 @@
-import React from "react";
+import { Link } from "react-router-dom"
 
-const Home: React.FC = () => {
-  return <div>Bem-vindo à página inicial!</div>;
-};
+export default function Home(){
+  return(
+    <div>
+      <h1>Home</h1>
+      <Link to="/venda" >Ir para Vendas </Link>
+    </div>
+  )
+}
 
-export default Home;
