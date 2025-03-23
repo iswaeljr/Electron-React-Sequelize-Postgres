@@ -3,6 +3,7 @@ import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from 'tailwindcss'
 import { platform } from 'os'
+import { copyFileSync } from 'fs'
 
 export default defineConfig({
   main: {
@@ -29,6 +30,15 @@ export default defineConfig({
         '@renderer': resolve('src/renderer/src')
       }
     },
-    plugins: [react()]
+    plugins: [react(),
+      {
+        name: 'copy-static-files',
+        buildStart() {
+          const sourcePath = resolve('src/renderer/config.html');
+          const destinationPath = resolve('out/renderer/config.html');
+          copyFileSync(sourcePath, destinationPath);
+        }
+      }
+    ]
   }
 })

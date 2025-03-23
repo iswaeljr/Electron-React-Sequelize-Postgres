@@ -1,11 +1,13 @@
 import { contextBridge } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
-import { userIpc } from './ipc/userIpc'
+import { userIpc, configIpc  } from './ipc/index'
 
 // Custom APIs for renderer
 const api = {
   user: userIpc,
+  config: configIpc
 }
+
 
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise

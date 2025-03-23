@@ -1,15 +1,18 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
+import { CarregarArquivoConfig } from './index'
 
 dotenv.config(); // Carrega variáveis do .env
 
+const {database, user, password, host} = CarregarArquivoConfig();
+
 // Criação da instância Sequelize
 const sequelize = new Sequelize(
-    process.env.DB_NAME || 'database_name',
-    process.env.DB_USER || 'user',
-    process.env.DB_PASSWORD || '',
+    database || 'database_name',
+    user || 'user',
+    password || '',
     {
-      host: process.env.DB_HOST || 'localhost',
+      host: host || 'localhost',
       dialect: 'postgres', // ou 'mysql', 'sqlite', 'mariadb'
       logging: false, // Logar queries (pode ser desativado em produção)
     }
