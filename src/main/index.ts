@@ -56,34 +56,6 @@ function createWindow(): void {
 
   
 }
-function createConfigWindow() : void {
-  // Criar uma nova instância da janela
-      configWindow = new BrowserWindow({
-      width: 800,
-      height: 700,
-      resizable: false,
-      autoHideMenuBar: true,
-      title: "Configuração",
-      webPreferences: {
-          preload: join(__dirname, '../preload/index.js'), // Preload para segurança
-          sandbox: false,  
-          nodeIntegration: false, // Desabilitar integração Node.js
-          contextIsolation: true // Habilitar isolamento de contexto
-      }
-  });
-
-  configWindow.loadFile(join(__dirname, '../renderer/config.html'));
-
-
-  // Manipular evento de fechamento
-  configWindow.on('closed', () => {
-
-    configWindow = null;
-    if (!mainWindow) {
-      createWindow(); // Cria a janela principal apenas se ela não existir
-  }
-  });
-}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -108,7 +80,6 @@ app.whenReady().then(async () => {
 
     await initializeDatabase();
     console.log('Banco de dados inicializado com sucesso!');
-
     
     AllIpcHandlers();
     createWindow();
@@ -121,12 +92,9 @@ app.whenReady().then(async () => {
     })
     
   } catch (error) {
-    
     checkAndCreateConfig();
     ConfigIpcHandlers();
-    const config = CarregarArquivoConfig();
-    
-    createConfigWindow();
+    createWindow();
 
     //console.error('Erro ao inicializar o banco de dados:', error);
   }

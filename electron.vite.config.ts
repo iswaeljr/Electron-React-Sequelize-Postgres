@@ -31,14 +31,7 @@ export default defineConfig({
       }
     },
     plugins: [react(),
-      {
-        name: 'copy-static-files',
-        buildStart() {
-          const sourcePath = resolve('src/renderer/config.html');
-          const destinationPath = resolve('out/renderer/config.html');
-          copyFileSync(sourcePath, destinationPath);
-        }
-      }
+      
     ]
   }
 })
