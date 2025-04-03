@@ -4,6 +4,7 @@ import { join } from 'path'
 
 
 const configPath = join(app.getPath('userData'), 'config.json');
+console.log(configPath);
 
 // Verificar e criar o arquivo de configuração
 function checkAndCreateConfig() {
@@ -37,5 +38,7 @@ function CarregarArquivoConfig(): any
         return { error: 'Erro ao acessar o arquivo de configuração.' };
     }
 }
+
+
 
 export { configPath, checkAndCreateConfig, CarregarArquivoConfig}

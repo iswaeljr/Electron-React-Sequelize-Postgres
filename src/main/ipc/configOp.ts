@@ -1,15 +1,17 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import fs from 'fs'
 import { configPath } from '../database/config';
+import { initializeDatabase } from '../database';
 
 export function ConfigIpcHandlers(){
+
 ipcMain.handle('save-config', (event, data) => {
     fs.writeFileSync(configPath, JSON.stringify(data, null, 4));
 
-    const configWindow = BrowserWindow.getFocusedWindow();
-    if (configWindow) {
-        configWindow.close();
-    }
+    // const configWindow = BrowserWindow.getFocusedWindow();
+    // if (configWindow) {
+    //     configWindow.close();
+    // }
    
 });
 
@@ -22,4 +24,11 @@ ipcMain.handle('get-config', () => {
         return { error: 'Arquivo de configuração não encontrado ou inválido!' };
     }
 });
+
+ipcMain.handle('check-database', async () => {
+    
+    const dbStatus = await initializeDatabase();
+    return dbStatus.success; // Retorna true ou false
+});
+
 }

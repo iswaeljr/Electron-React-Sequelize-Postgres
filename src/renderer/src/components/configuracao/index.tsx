@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function Configuracao() {
+    
     return (
         <div className="bg-gray-100 flex items-center justify-center h-screen">
             <div className="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
@@ -77,7 +78,9 @@ export default function Configuracao() {
                     </button>
                 </form>
                 <div className="justify-center">
-                    <Link to="/" >Home</Link>
+                    <Link to="/" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                    Home
+                    </Link>
                 </div>
             </div>
         </div>

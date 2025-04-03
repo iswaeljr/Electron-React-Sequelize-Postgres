@@ -5,12 +5,10 @@ import icon from '../../resources/icon.png'
 import {initializeDatabase} from './database';
 import { AllIpcHandlers } from './ipc';
 import { createFileRoute, createURLRoute } from 'electron-router-dom';
-import { CarregarArquivoConfig, checkAndCreateConfig } from './database/config';
-import fs from 'fs'
+import { checkAndCreateConfig } from './database/config';
 import { ConfigIpcHandlers } from './ipc/configOp';
 
 let mainWindow: BrowserWindow | null;
-let configWindow: BrowserWindow | null;
 
 function createWindow(): void {
   // Create the browser window.
@@ -78,23 +76,35 @@ app.whenReady().then(async () => {
   // Inicialize o banco de dados
   try {
 
-    await initializeDatabase();
-    console.log('Banco de dados inicializado com sucesso!');
-    
-    AllIpcHandlers();
-    createWindow();
+    const {success} = await initializeDatabase();
 
-    app.on('activate', function () {
-      console.log('active')
-      if (BrowserWindow.getAllWindows().length === 0 && mainWindow === null) {
-        createWindow(); // Cria apenas se não houver janelas abertas
+    if (success)
+    {
+      console.log('Banco de dados inicializado com sucesso!');
+    
+      ConfigIpcHandlers();
+      AllIpcHandlers();
+      createWindow();
+  
+      app.on('activate', function () {
+        console.log('active')
+        if (BrowserWindow.getAllWindows().length === 0 && mainWindow === null) {
+          createWindow(); // Cria apenas se não houver janelas abertas
+      }
+      })
+
     }
-    })
+    else
+    {
+      checkAndCreateConfig();
+      ConfigIpcHandlers();
+      createWindow();
+    }
+    
+   
     
   } catch (error) {
-    checkAndCreateConfig();
-    ConfigIpcHandlers();
-    createWindow();
+   
 
     //console.error('Erro ao inicializar o banco de dados:', error);
   }
